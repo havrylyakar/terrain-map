@@ -1,0 +1,7 @@
+{
+  "name": "terrain-map",
+  "private": true,
+  "dependencies": {
+    "google-maps": "^3.3.0"
+  }
+}
