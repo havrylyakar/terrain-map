@@ -1,0 +1,9 @@
+.title-header
+  %h1= I18n.t('views.titles.areas.index')
+.grid
+  = areas
+  %figure.effect-hera.current
+    = image_tag 'logo.png'
+    %figcaption
+      %p
+        = link_to '+', terrain_index_path, class: 'hera-plus'

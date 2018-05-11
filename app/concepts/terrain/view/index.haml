@@ -1,0 +1,14 @@
+.js-control-button{ style: 'display: none'}
+  .tabs.tabs-style-circle
+    %ul
+      %li.tab-current
+        = link_to '#' do
+          %i.fa.fa-crosshairs
+.js-send-control-button{ style: 'display: none'}
+  .tabs.tabs-style-circle.non-active.js-coordinate-control
+    %ul
+      %li.tab-current
+        = link_to new_area_path do
+          %i.fa.fa-send
+#map
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:google]}&callback=myMap"

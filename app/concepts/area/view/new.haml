@@ -1,0 +1,14 @@
+#modal-window.modal.modal-remote.inmodal.js-remote-modal{ 'tabindex': '-1', role: 'dialog' }
+  .modal-dialog
+    .modal-content.admin-product-modal
+      .modal-header
+        %button.close{ data: { dismiss: :modal} }
+          %span{ aria: { hidden: true } }×
+        = image_tag google_image_url, class: 'modal-image'
+      .modal-body
+        = form_for @form, url: areas_path, html: { class: 'form-horizontal', multipart: true } do |f|
+          = render view: :form, locals: { f: f }
+          = f.hidden_field :image, value: google_image_url
+          .form-group
+            .col-sm-3.col-sm-offset-3
+              = f.submit I18n.t('buttons.save'), class: 'btn btn-primary btn-block submit-form-js'

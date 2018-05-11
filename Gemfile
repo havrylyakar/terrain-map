@@ -5,8 +5,8 @@ ruby File.open('.ruby-version', 'rb') { |f| f.read.chomp }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -20,11 +20,22 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'sprockets-es6'
+gem 'devise'
+gem 'devise-bootstrap-views'
+
+gem 'trailblazer', '~> 2.0', '>= 2.0.7'
+gem 'trailblazer-rails', '~> 1.0', '>= 1.0.4'
+gem 'trailblazer-cells'
+gem 'cells-haml'
+gem 'cells-rails'
+
+gem 'paperclip', '~> 5.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'haml', '~> 5.0', '>= 5.0.4'
+gem "haml-rails", "~> 1.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -38,6 +49,10 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'font-awesome-rails'
+gem 'twitter-bootstrap-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

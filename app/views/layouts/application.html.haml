@@ -2,10 +2,16 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %title TerrainMap
+    %title= I18n.t('product_name')
+    = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-  %body
+    = javascript_include_tag ApplicationView.action_assets_path(params, :js)
+    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    ApplicationView.action_assets_path(params, :css)
+    %meta{ content: 'width=device-width', name: 'viewport' }
+  %body.black-bg.devise-layout
+    = render 'layouts/partials/alerts'
     = yield
-    = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBGVWbr3ZQ_o9w_CNwycJbAh2yKbAVRvbk&callback=myMap'
+
+    = yield :scripts

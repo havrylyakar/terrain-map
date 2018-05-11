@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
-//= require maps/main
+//= require alerts
+//= require send_ajax_data
+//= require twitter/bootstrap
+//= require global
+//= require modal_window

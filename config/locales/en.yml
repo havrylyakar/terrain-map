@@ -31,3 +31,18 @@
 
 en:
   hello: "Hello world"
+  product_name: 'Terrain Map'
+  buttons:
+    save: 'Save'
+  devise_views:
+    shared_links:
+      signin: 'Sign in'
+  views:
+    titles:
+      areas:
+        index: 'Select your area'
+    terrain:
+      crop: 'Crop Area'
+    areas:
+      name: 'Keyword or name'
+      save_info: 'Save Area'

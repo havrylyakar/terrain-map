@@ -1,0 +1,12 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'cbp-mc-form'} ) do |f|
+  = f.label :email, class: 'cbp-mc-form-label'
+  = f.email_field :email, autofocus: true, autocomplete: "email"
+  = f.label :password, class: 'cbp-mc-form-label'
+  = f.password_field :password, autocomplete: "off"
+  - if devise_mapping.rememberable?
+    .form-group-sign-in
+      = f.check_box(:remember_me, { checked: true, class: 'i-checks' }, 1, 0)
+      = f.label :remember_me
+  .cbp-mc-submit-wrap
+    = f.submit I18n.t('devise_views.shared_links.signin'), class: 'cbp-mc-submit'
+/ <haml_loud> render &quot;devise/shared/links&quot; </haml_loud>

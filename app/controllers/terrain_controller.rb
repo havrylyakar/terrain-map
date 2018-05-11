@@ -1,5 +1,5 @@
 class TerrainController < ApplicationController
   def index
-    render :index
+    render_cell_view :index
   end
 end

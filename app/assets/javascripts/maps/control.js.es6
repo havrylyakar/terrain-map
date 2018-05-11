@@ -1,28 +1,18 @@
 class Control {
-  constructor(innerHTML, callback){
-    this._element = this.setElement(innerHTML, callback)
+  constructor(html, callback){
+    this._element = this.setElement(html, callback)
   }
 
   static elementGet(...args) {
     return new Control(...args).element;
   }
 
-  setElement (innerHtml, callback) {
+  setElement (html, callback) {
     let control = document.createElement('div');
-
-    control.innerHTML = innerHtml;
-    control.index = 1;
-    control.className = 'google-map-control';
+    control.innerHTML = html.trim();
     control.addEventListener('click', callback);
-    control.style = this.styling();
 
     return control;
-  }
-
-  styling () {
-    return {
-      'padding-top': '10px'
-    }
   }
 
   get element() {
@@ -31,6 +21,5 @@ class Control {
 
   set element(value) {
     this.area = value;
-
   }
 }

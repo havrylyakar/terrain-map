@@ -1,0 +1,17 @@
+.form-group
+  %label.col-sm-3.control-label= I18n.t('views.areas.name')
+  .col-sm-7
+    = f.text_field :name, class: 'form-control'
+= f.fields_for :bound do |ff|
+  = ff.fields_for :sw_point do |sw|
+    = sw.hidden_field :lat, class: 'form-control', value: params.dig(:south_west, :lat)
+    = sw.hidden_field :lng, class: 'form-control', value: params.dig(:south_west, :lon)
+  = ff.fields_for :nw_point do |nw|
+    = nw.hidden_field :lat, class: 'form-control', value: params.dig(:nort_west, :lat)
+    = nw.hidden_field :lng, class: 'form-control', value: params.dig(:nort_west, :lon)
+  = ff.fields_for :ne_point do |ne|
+    = ne.hidden_field :lat, class: 'form-control', value: params.dig(:north_east, :lat)
+    = ne.hidden_field :lng, class: 'form-control', value: params.dig(:north_east, :lon)
+  = ff.fields_for :se_point do |se|
+    = se.hidden_field :lat, class: 'form-control', value: params.dig(:south_east, :lat)
+    = se.hidden_field :lng, class: 'form-control', value: params.dig(:south_east, :lon)
