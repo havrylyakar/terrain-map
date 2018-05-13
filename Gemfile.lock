@@ -360,6 +360,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets (>= 3.0.0)
   sprockets-es6
   trailblazer (~> 2.0, >= 2.0.7)
   trailblazer-cells
