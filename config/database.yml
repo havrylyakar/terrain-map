@@ -14,3 +14,12 @@ default: &default
 development:
   <<: *default
   database: terrain_map_development
+
+production:
+  <<: *default
+  database: dbjqbilcdt6tml
+  user: aivqrfddvonpwm
+  username: alter_messages
+  password: <%= ENV['CRYPTO_MESSAGES_DATABASE_PASSWORD'] %>
+  host: ec2-54-163-240-54.compute-1.amazonaws.com
+
