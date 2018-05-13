@@ -29,13 +29,18 @@ gem 'trailblazer-cells'
 gem 'cells-haml'
 gem 'cells-rails'
 
+gem 'google_maps_service'
+
 gem 'paperclip', '~> 5.3'
+gem 'faraday'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem "haml-rails", "~> 1.0"
+
+gem 'i18n-js', '>= 3.0.0.rc11'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

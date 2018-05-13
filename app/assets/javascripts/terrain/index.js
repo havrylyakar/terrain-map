@@ -1,5 +1,5 @@
-//= require 'maps/google_maps_helper'
-//= require 'maps/view_port'
+//= require '2d_map/google_maps_helper'
+//= require '2d_map/view_port'
 
 function myMap() {
   ViewPort.setMap(new google.maps.Map(document.getElementById('map'), GoogleMapsHelper.initOptions()));

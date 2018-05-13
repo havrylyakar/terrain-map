@@ -13,8 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
+
 //= require alerts
 //= require send_ajax_data
 //= require twitter/bootstrap
 //= require global
 //= require modal_window
+//= require loader

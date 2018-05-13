@@ -1,8 +1,12 @@
-%figure.effect-hera
+%figure.effect-hera.js-area-box
   = image_tag model.image.url(:small)
   %figcaption
     %h2
       %span= model.name
     %p
-      = link_to '#' do
+      = link_to maps_path(model.id) do
         %i.fa.fa-eye
+      = link_to area_path(model.id), class: 'js-delete-area' do
+        %i.fa.fa-times
+      = link_to heights_area_path(model.id) do
+        %i.fa.fa-download

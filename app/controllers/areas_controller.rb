@@ -15,4 +15,14 @@ class AreasController < ApplicationController
     run Area::New
     render_form :new, layout: false
   end
+
+  def destroy
+    run Area::Destroy
+    render json: result['alerts'], status: result['status']
+  end
+
+  def heights
+    run Area::Show
+    send_file result['model'].coordinates.path, filename: 'temp', type: 'application/json'
+  end
 end

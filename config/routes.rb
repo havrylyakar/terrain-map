@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # resources :terrains, only: :index
   root 'terrain#index'
 
-  resources :areas, only: [:index, :create, :new]
+  resources :areas, except: :update do
+    member do
+      get 'heights'
+      resources :maps, only: [:index]
+    end
+  end
   resources :terrain, only: [:index]
 end

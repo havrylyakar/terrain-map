@@ -10,7 +10,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( devise.css )
 Rails.application.config.assets.precompile += %w( devise.js )
 Rails.application.config.assets.precompile += %w( terrain.js )
+Rails.application.config.assets.precompile += %w( areas/index.js )
 Rails.application.config.assets.precompile += %w( areas/index.css )
+Rails.application.config.assets.precompile += %w( maps/index.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

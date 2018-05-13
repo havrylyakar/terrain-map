@@ -33,7 +33,6 @@ class GoogleStaticMap < BaseService
   end
 
   def size_format
-    binding.pry
     "#{(size[:width].to_f/(size_coeficient + 1)).to_i}x#{(size[:height].to_f/(size_coeficient + 1)).to_i}"
   end
 

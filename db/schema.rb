@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_10_181630) do
+ActiveRecord::Schema.define(version: 2018_05_13_090955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 2018_05_10_181630) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "coordinates_file_name"
+    t.string "coordinates_content_type"
+    t.integer "coordinates_file_size"
+    t.datetime "coordinates_updated_at"
+    t.jsonb "mesh"
   end
 
   create_table "bounds", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -36,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_05_10_181630) do
     t.uuid "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "size"
     t.index ["area_id"], name: "index_bounds_on_area_id"
   end
 

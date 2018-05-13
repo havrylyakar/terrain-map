@@ -1,7 +1,7 @@
-//= require 'maps/control'
-//= require 'maps/rectangle'
-//= require 'maps/style/terrain'
-//= require 'maps/style/default'
+//= require '2d_map/control'
+//= require '2d_map/rectangle'
+//= require '2d_map/style/terrain'
+//= require '2d_map/style/default'
 
 var GoogleMapsHelper = {
   STYLED_MAP: 'styled_map',

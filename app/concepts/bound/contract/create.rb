@@ -12,12 +12,18 @@ class Bound
 
       property :area_id
 
+      property :size, populator: :populate_size!
+
       validates :sw_point, :nw_point, :ne_point, :se_point, presence: true
 
       %i(sw_point nw_point ne_point se_point).each do |point|
         define_method "#{point}_prepopulate!" do |_options|
           self.send("#{point}=", ::Point.new)
         end
+      end
+
+      def populate_size!(fragment:, **)
+        self.size = JSON.parse fragment.gsub('=>', ':')
       end
     end
   end

@@ -46,3 +46,11 @@ en:
     areas:
       name: 'Keyword or name'
       save_info: 'Save Area'
+      messages:
+        destroyed: 'Area was destroyed'
+  helpers:
+    links:
+      yes_destroy: 'Yes, delete it!'
+      confirm: 'Are you sure?'
+    titles:
+      deleted: 'Deleted!'

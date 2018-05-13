@@ -28,3 +28,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/tmp
+/public/system
+/public/assets
+/public/javascripts

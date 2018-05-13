@@ -3,6 +3,7 @@
   .col-sm-7
     = f.text_field :name, class: 'form-control'
 = f.fields_for :bound do |ff|
+  = ff.hidden_field :size, value: params[:size]
   = ff.fields_for :sw_point do |sw|
     = sw.hidden_field :lat, class: 'form-control', value: params.dig(:south_west, :lat)
     = sw.hidden_field :lng, class: 'form-control', value: params.dig(:south_west, :lon)
