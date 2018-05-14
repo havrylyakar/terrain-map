@@ -15,7 +15,8 @@ var Map = {
   worlSettings: {
     worldWidth: 20000,
     worldDepth: 20000,
-    color: 0xbfd1e5
+    color: 0xbfd1e5,
+    elevationCoeficient: 20
   },
   geometryWidth: null,
   geometryHeight: null,
@@ -51,7 +52,7 @@ var Map = {
 
   _initCamera: function() {
     Map.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 20000 );
-    Map.camera.position.y = 4000;
+    Map.camera.position.y = (Math.max(...Map.arrayData)*Map.worlSettings.elevationCoeficient) + 100;
     Map.camera.position.x = -1000;
     Map.camera.position.z = 1000;
   },
@@ -87,7 +88,7 @@ var Map = {
     var vertices = Map.geometry.attributes.position.array;
 
     for ( var i = 0, j = 0, l = vertices.length/3; i < l; i ++, j += 3 ) {
-      Map.geometry.attributes.position.setY(i, Map.arrayData[i]*20)
+      Map.geometry.attributes.position.setY(i, Map.arrayData[i]*Map.worlSettings.elevationCoeficient)
     }
   },
 
