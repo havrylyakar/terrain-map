@@ -9,7 +9,8 @@ class Area
     end
 
     def call
-      file.tap { |f| f.puts(coordinates_json) && f.close }
+      file.write(coordinates_json)
+      file
     end
 
     private
@@ -17,7 +18,7 @@ class Area
     attr_reader :heights, :mesh, :file
 
     def coordinates_json
-      (0..mesh[:y]).map do
+      (0...mesh[:y]).map do
         heights.slice!(0, mesh[:x]).map { |e| e[:elevation] }
       end.to_json
     end

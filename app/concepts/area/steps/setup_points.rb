@@ -9,11 +9,11 @@ class Area
 
       def self.points(params)
         {
-          nort_west: {
+          south_east: {
             lat: params.dig(:south_west, :lat),
             lon: params.dig(:north_east, :lon)
           },
-          south_east: {
+          nort_west: {
             lat: params.dig(:north_east, :lat),
             lon: params.dig(:south_west, :lon)
           }

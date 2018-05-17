@@ -11,7 +11,7 @@ var GoogleMapsHelper = {
 
   initOptions: function () {
     return {
-      center: { lat: 41.85, lng: -87.65 },
+      center: { lat: 48.16022491, lng: 24.49998093 },
       zoom: 12,
       mapTypeId: 'terrain',
       streetViewControl: false,
@@ -28,7 +28,7 @@ var GoogleMapsHelper = {
       scaleControl: false,
       scrollwheel: false,
       disableDoubleClickZoom: true,
-      zoom: 15,
+      zoom: 14,
       styles: StyleTerrain,
     }
   },
@@ -48,45 +48,6 @@ var GoogleMapsHelper = {
       GoogleMapsHelper.DEFAULT_STYLE,
       GoogleMapsHelper.STYLED_MAP
     ]
-  },
-
-  areaControl: function () {
-    return Control.elementGet($('.js-control-button').html(), () => {
-      if (ViewPort.rectangle == null || ViewPort.rectangle.visible == false) {
-        ViewPort.setRectangle();
-        ViewPort.setTerrainMode();
-
-        $(`.${GoogleMapsHelper.SEND_COORDINATE_CONTROL_CLASS}`).removeClass('non-active');
-      }
-      else {
-        ViewPort.clearRectangle();
-        ViewPort.setDefaultMode();
-
-        $(`.${GoogleMapsHelper.SEND_COORDINATE_CONTROL_CLASS}`).addClass('non-active');
-      }
-    });
-  },
-
-  sendCoordinateDataControl: function() {
-    return Control.elementGet($('.js-send-control-button').html(), function(event) {
-      event.preventDefault();
-
-      let url = new URL($(this).find('a')[0].href);
-
-      Object.keys(ViewPort.rectangle.coordinates()).map(function(objectKey, index) {
-        Object.keys(ViewPort.rectangle.coordinates()[objectKey]).map(function(coordinateKey, index) {
-          url.searchParams.append(`${objectKey}[${coordinateKey}]`, ViewPort.rectangle.coordinates()[objectKey][coordinateKey]);
-        })
-      });
-
-      url.searchParams.append('size[height]', ViewPort.rectangle.sizeHeight());
-      url.searchParams.append('size[width]', ViewPort.rectangle.sizeWidth());
-      url.searchParams.append('center[lat]', ViewPort.rectangle.center().lat());
-      url.searchParams.append('center[lng]', ViewPort.rectangle.center().lng());
-
-      openModalWindowAjax(url, '#modal-window');
-
-    }, GoogleMapsHelper.SEND_COORDINATE_CONTROL_CLASS)
   }
 }
 

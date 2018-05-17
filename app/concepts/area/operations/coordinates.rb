@@ -14,7 +14,7 @@ class Area
 
     def locations(options, elevation_points:, **)
       options['locations'] =
-        elevation_points.inject([]) { |a, e| a << [e[:x], e[:y]] }
+        elevation_points.inject([]) { |a, e| a << [e[:y], e[:x]] }
     end
 
     def heights(options, locations:, **)

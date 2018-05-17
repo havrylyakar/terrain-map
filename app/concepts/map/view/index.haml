@@ -1,6 +1,16 @@
 .spinner-wrapper
+.world-panel
+  .round-button-circle
+    = link_to areas_path, class: 'btn btn-circle btn-default button-circle' do
+      %i.fa.fa-home
+    = link_to '', search_maps_path(model), class: 'btn btn-circle btn-default button-circle markers-way-js'
+  .messages
+    %p= I18n.t('views.maps.messages.look_mode')
+    %p= I18n.t('views.maps.messages.pin_mode')
+  .js-active-look.active-look{ style: 'display: none'}= 'active look mode'
+  .js-active-pin.active-look{ style: 'display: none' }= 'active pin mode'
 .world_background
-  #container{ data: { source: maps_url(format: :json) } }
+  #container{ data: world_configs }
 
 :javascript
   Map.runApp('container');

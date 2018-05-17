@@ -1,14 +1,10 @@
-.js-control-button{ style: 'display: none'}
-  .tabs.tabs-style-circle
-    %ul
-      %li.tab-current
-        = link_to '#' do
-          %i.fa.fa-crosshairs
-.js-send-control-button{ style: 'display: none'}
-  .tabs.tabs-style-circle.non-active.js-coordinate-control
-    %ul
-      %li.tab-current
-        = link_to new_area_path do
-          %i.fa.fa-send
+.world-panel
+  .round-button-circle
+    = link_to areas_path, class: 'btn btn-circle btn-default button-circle' do
+      %i.fa.fa-home
+    = link_to '#', class: 'btn btn-circle btn-default button-circle js-control-mode-button' do
+      %i.fa.fa-crosshairs
+    = link_to new_area_path, class: 'btn btn-circle btn-default button-circle js-control-send-button', disabled: true do
+      %i.fa.fa-send
 #map
-= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:google]}&callback=myMap"
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:google]}&callback=myMap&libraries=geometry"

@@ -37,7 +37,15 @@ en:
   devise_views:
     shared_links:
       signin: 'Sign in'
+  map:
+    search:
+      errors:
+        points: 'Paste START and END point to continue search the shortest way'
   views:
+    maps:
+      messages:
+        pin_mode: 'Press P for setting FROM and TO points'
+        look_mode: 'Press L for activating move mode'
     titles:
       areas:
         index: 'Select your area'

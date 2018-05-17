@@ -23,6 +23,6 @@ class AreasController < ApplicationController
 
   def heights
     run Area::Show
-    send_file result['model'].coordinates.path, filename: 'temp', type: 'application/json'
+    send_file result['model'].coordinates.path, filename: 'temp.json', type: 'application/json'
   end
 end

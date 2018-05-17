@@ -21,7 +21,7 @@ class AlertsViewHandler
   end
 
   def setup_status!
-    operation['status'] = contract_errors_message.blank? ? 200 : 422
+    operation['status'] = operation_errors.blank? ? 200 : 422
   end
 
   def success_message
@@ -30,14 +30,22 @@ class AlertsViewHandler
 
   def contract_errors_message
     operation['contract.default'] &&
-      @errors ||= operation['contract.default'].errors.full_messages
+      operation['contract.default'].errors.full_messages
+  end
+
+  def steps_errors_message
+    operation['step.errors'].presence
+  end
+
+  def operation_errors
+    @errors ||= steps_errors_message || contract_errors_message
   end
 
   def message
-    contract_errors_message.blank? ? success_message : contract_errors_message
+    operation_errors.blank? ? success_message : operation_errors
   end
 
   def message_type
-    contract_errors_message.blank? ? 'notice' : 'alert'
+    operation_errors.blank? ? 'notice' : 'alert'
   end
 end

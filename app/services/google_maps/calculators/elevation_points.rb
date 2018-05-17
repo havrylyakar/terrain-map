@@ -20,38 +20,35 @@ module GoogleMaps
       delegate :sw_point, :nw_point, :ne_point, to: :bound
 
       def perform!
-        point = { x: nw_point.lat, y: nw_point.lng }
+        point = { x: nw_point.lng, y: nw_point.lat }
 
         mesh[:y].times do
           mesh[:x].times do
-            points.append(next_point_x(point))
+            points.append(point)
+            point = next_point_x(point)
           end
-          points.append(next_point_y(point))
+          point = next_point_y(point)
         end
       end
 
       def next_point_x(point)
-        (point.tap { |p| p.merge!(x: p[:x] + x_step) }).dup
+        point.merge(x: point[:x] + x_step)
       end
 
       def next_point_y(point, x = default_lat)
-        (point.tap { |p| p.merge!(x: x, y: p[:y] + y_step) }).dup
-      end
-
-      def point_enumertor
-        mesh[:x]
+        point.merge(x: x, y: point[:y] - y_step)
       end
 
       def default_lat
-        @default_lat ||= nw_point.lat
+        @default_lat ||= nw_point.lng
       end
 
       def y_step
-        @y_step ||= ((nw_point.lng - sw_point.lng) / mesh[:y]).abs
+        @y_step ||= ((nw_point.lat - sw_point.lat) / (mesh[:y] - 1))
       end
 
       def x_step
-        @x_step ||= ((nw_point.lat - ne_point.lat) / mesh[:x]).abs
+        @x_step ||= ((ne_point.lng - nw_point.lng) / (mesh[:x] - 1))
       end
     end
   end

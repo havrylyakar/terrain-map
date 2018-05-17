@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :areas, except: :update do
     member do
       get 'heights'
-      resources :maps, only: [:index]
+      resources :maps, only: [:index] do
+        collection do
+          get 'search'
+        end
+      end
     end
   end
   resources :terrain, only: [:index]

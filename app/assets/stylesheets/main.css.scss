@@ -1,3 +1,5 @@
+@import 'loader';
+
 #map {
   width:100%;
   height:100%;
@@ -34,4 +36,80 @@
   font-size: 4em;
   line-height: 1.3;
   color: white;
+}
+
+.button-circle {
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
+  font-size: 30px;
+  line-height: 1.33;
+  border-radius: 35px;
+  border: 3px solid #fff;
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.button-circle:hover, .button-circle:focus, .button-circle:focus:active {
+  background-color: rgb(115, 148, 179);
+  border-color: #fff;
+  outline: none;
+}
+
+.round-button-circle .button-circle:not(:first-child) {
+  margin-top: 20px;
+}
+
+.button-circle i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: white;
+  font-size: 25px;
+}
+
+.markers-way-js::after {
+  background: url("/assets/way-icon.png") no-repeat center;
+  background-size: 40px;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.round-button-circle {
+  margin-bottom: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.round-button-circle {
+  top: 0px;
+  padding: 5px;
+  float: left;
+  width: 7%;
+}
+
+.world-panel {
+  position: absolute;
+  width: 100%;
+  top: 10px;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 100%;
+}
+
+.preview-area{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #A3BED3;
+  display: none;
 }

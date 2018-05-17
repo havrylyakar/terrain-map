@@ -13,7 +13,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 	this.lookVertical = true;
 	this.autoForward = false;
 
-	this.activeLook = true;
+	this.activeLook = false;
 
 	this.heightSpeed = false;
 	this.heightCoef = 1.0;
@@ -79,16 +79,16 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 		event.preventDefault();
 		event.stopPropagation();
 
-		if ( this.activeLook ) {
+		// if ( this.activeLook ) {
 
-			switch ( event.button ) {
+		// 	switch ( event.button ) {
 
-				case 0: this.moveForward = true; break;
-				case 2: this.moveBackward = true; break;
+		// 		case 0: this.moveForward = true; break;
+		//		case 2: this.moveBackward = true; break;
 
-			}
+		// 	}
 
-		}
+		// }
 
 		this.mouseDragOn = true;
 
@@ -115,18 +115,20 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 	};
 
 	this.onMouseMove = function ( event ) {
+		// if (this.mouseDragOn == true) {
 
-		if ( this.domElement === document ) {
+			if ( this.domElement === document ) {
 
-			this.mouseX = event.pageX - this.viewHalfX;
-			this.mouseY = event.pageY - this.viewHalfY;
+				this.mouseX = event.pageX - this.viewHalfX;
+				this.mouseY = event.pageY - this.viewHalfY;
 
-		} else {
+			} else {
 
-			this.mouseX = event.pageX - this.domElement.offsetLeft - this.viewHalfX;
-			this.mouseY = event.pageY - this.domElement.offsetTop - this.viewHalfY;
+				this.mouseX = event.pageX - this.domElement.offsetLeft - this.viewHalfX;
+				this.mouseY = event.pageY - this.domElement.offsetTop - this.viewHalfY;
 
-		}
+			}
+		// }
 
 	};
 
@@ -150,6 +152,8 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 
 			case 82: /*R*/ this.moveUp = true; break;
 			case 70: /*F*/ this.moveDown = true; break;
+
+			case 76: /*L*/ triggerActiveMode(this); break;
 
 		}
 
@@ -177,6 +181,18 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 		}
 
 	};
+
+	function triggerActiveMode (object) {
+		if (object.activeLook == true) {
+			object.activeLook = false
+			$('.js-active-look').hide();
+		}
+		else {
+			object.activeLook = true
+			$('.js-active-look').show();
+			View3dEvents._offPinMode();
+		}
+	}
 
 	this.update = function( delta ) {
 		if ( this.enabled === false ) return;
