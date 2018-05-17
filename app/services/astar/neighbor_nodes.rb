@@ -31,7 +31,7 @@ module Astar
       {
         came_from: node,
         h: Astar::Heuristic.call(space_coordinates, dest_node.coordinates_hash),
-        g: node.g + old_lenght_neighbours(space_coordinates, node.coordinates_hash)
+        g: node.g + lenght_neighbours(space_coordinates, node.coordinates_hash)
       }.merge(space_coordinates)
     end
 
