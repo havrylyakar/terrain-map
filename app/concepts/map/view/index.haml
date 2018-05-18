@@ -4,6 +4,8 @@
     = link_to areas_path, class: 'btn btn-circle btn-default button-circle' do
       %i.fa.fa-home
     = link_to '', search_maps_path(model), class: 'btn btn-circle btn-default button-circle markers-way-js'
+    = link_to '#', class: 'btn btn-circle btn-default button-circle js-download-object', data: { name: model.name } do
+      %i.fa.fa-download
   .messages
     %p= I18n.t('views.maps.messages.look_mode')
     %p= I18n.t('views.maps.messages.pin_mode')

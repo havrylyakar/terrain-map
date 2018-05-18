@@ -1,4 +1,16 @@
+//= require 3d_view/OBJExporter
+//= require 3d_view/helpers/export
+
 var SearchEvents = {
+  downloadMesh: function(event) {
+    event.preventDefault();
+
+    var exporter = new THREE.OBJExporter();
+
+    Export.saveString( exporter.parse(Map.mesh), `${this.dataset.name}.obj` );
+  },
+
+
   sendCoordinates: function(event) {
     event.preventDefault();
 
