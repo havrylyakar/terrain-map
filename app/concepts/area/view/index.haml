@@ -1,3 +1,7 @@
+.left-block
+  = link_to destroy_user_session_path, method: :delete do
+    %i.fa.fa-sign-out
+    = I18n.t('header.logout')
 .title-header
   %h1= I18n.t('views.titles.areas.index')
 .grid

@@ -10,7 +10,7 @@ class Area
 
     step ::Trailblazer::Operation::Model(::Area, :new)
     step ::TrailblazerHelpers::Steps::AssignCurrentUser
-    step ::Area::Steps::SetupMesh
+    # step ::Area::Steps::SetupMesh
     step ::Trailblazer::Operation::Contract::Build()
 
 

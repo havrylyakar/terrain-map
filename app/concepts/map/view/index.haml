@@ -3,9 +3,17 @@
   .round-button-circle
     = link_to areas_path, class: 'btn btn-circle btn-default button-circle' do
       %i.fa.fa-home
-    = link_to '', search_maps_path(model), class: 'btn btn-circle btn-default button-circle markers-way-js'
-    = link_to '#', class: 'btn btn-circle btn-default button-circle js-download-object', data: { name: model.name } do
+    = link_to '', search_maps_path(model), class: 'btn btn-circle btn-default button-circle markers-way-js',
+                                           title: I18n.t('button.titles.map.search'),
+                                           data: { test: search_test_maps_path(model) }
+    = link_to '#', class: 'btn btn-circle btn-default button-circle js-download-object',
+                   data: { name: model.name }, title: I18n.t('button.titles.map.download') do
       %i.fa.fa-download
+    / = link_to mesh_area_path(model), class: 'btn btn-circle btn-default button-circle mesh-nodes-js' do
+    /   %i.fa.fa-codepen
+    .wold-bottom
+      = check_box_tag(nil, nil, true, class: 'js-switch js-mesh-switch', data: { switchery: true })
+
   .messages
     %p= I18n.t('views.maps.messages.look_mode')
     %p= I18n.t('views.maps.messages.pin_mode')

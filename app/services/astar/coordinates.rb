@@ -27,19 +27,27 @@ module Astar
     end
 
     def coordinate_x(i:, **)
-      i * cell_width
+      i * cell_width + half_cell_width
     end
 
     def coordinate_y(j:, **)
-      j * cell_height
+      j * cell_height + half_cell_height
     end
 
     def cell_height
-      @cell_height ||= bound.size['height'].to_i / mesh['y']
+      @cell_height ||= (bound.size['height'].to_i * WorldSettings::MAP_COEFICIENT) / mesh['y'].to_f
     end
 
     def cell_width
-      @cell_width ||= bound.size['width'].to_i / mesh['x']
+      @cell_width ||= (bound.size['width'].to_i * WorldSettings::MAP_COEFICIENT) / mesh['x'].to_f
+    end
+
+    def half_cell_width
+      @half_cell_width ||= cell_width / 2.0
+    end
+
+    def half_cell_height
+      @half_cell_height ||= cell_height * 0.8
     end
   end
 end

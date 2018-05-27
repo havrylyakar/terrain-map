@@ -15,4 +15,11 @@ class MapsController < ApplicationController
     end
     render json: result['alerts'], status: result['status']
   end
+
+  def search_test
+    run Map::SearchTest do |result|
+      return render json: result['way'], status: :ok
+    end
+    render json: result['alerts'], status: result['status']
+  end
 end

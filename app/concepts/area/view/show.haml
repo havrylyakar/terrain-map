@@ -6,7 +6,9 @@
     %p
       = link_to maps_path(model.id) do
         %i.fa.fa-eye
-      = link_to area_path(model.id), class: 'js-delete-area' do
-        %i.fa.fa-times
       = link_to heights_area_path(model.id) do
         %i.fa.fa-download
+      = link_to mesh_area_path(model.id) do
+        %i.fa.fa-codepen
+      = link_to area_path(model.id), class: 'js-delete-area' do
+        %i.fa.fa-times

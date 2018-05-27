@@ -24,6 +24,13 @@ var AdditionalElements = {
     }
   },
 
+  removeTestWay() {
+    if (Map.layers.testway){
+      Map.scene.remove(Map.layers.testway._group);
+      Map.layers.testway = null;
+    }
+  },
+
   addPointToScene(pin, scene) {
     let intersect = View3dEvents.firstMeshIntersect();
 

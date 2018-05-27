@@ -2,10 +2,11 @@ module Astar
   class NeighborNodes
     include Astar::Directions
 
-    def initialize(area, dest_node)
+    def initialize(area, dest_node, options = {})
       @area = area
       @dest_node = dest_node
       @heightFactor = 0.5
+      @options = options
     end
 
     def find(node)
@@ -22,7 +23,8 @@ module Astar
     delegate :mesh, to: :area
 
     def coordinates_service
-      @coordinates_service ||= ::Astar::Coordinates.new(area)
+      @coordinates_service ||= @options.fetch(:coordinates_service,
+                                              ::Astar::Coordinates.new(area))
     end
 
     def node_params(coordinate, node)
@@ -31,7 +33,9 @@ module Astar
       {
         came_from: node,
         h: Astar::Heuristic.call(space_coordinates, dest_node.coordinates_hash),
-        g: node.g + lenght_neighbours(space_coordinates, node.coordinates_hash)
+        g: node.g + lenght_neighbours(space_coordinates, node.coordinates_hash),
+        i: coordinate[:i],
+        j: coordinate[:j],
       }.merge(space_coordinates)
     end
 
@@ -48,7 +52,7 @@ module Astar
 
     def old_lenght_neighbours(nodeA, nodeB)
       return (nodeA[:x] - nodeB[:x]).abs + (nodeA[:y] - nodeB[:y]).abs +
-        ((nodeA[:z] - nodeB[:z]).abs * @heightFactor)
+        ((nodeA[:z] - nodeB[:z]).abs)
     end
 
     def lenght_neighbours(nodeA, nodeB)
@@ -57,7 +61,7 @@ module Astar
     end
 
     def correct?(i:, j:, **)
-      i < mesh['x'] && j < mesh['y']
+      i < mesh['x'] && i >= 0 && j < mesh['y'] && j >= 0
     end
   end
 end

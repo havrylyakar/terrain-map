@@ -25,4 +25,12 @@ class AreasController < ApplicationController
     run Area::Show
     send_file result['model'].coordinates.path, filename: 'temp.json', type: 'application/json'
   end
+
+  def mesh
+    run Area::Mesh
+    respond_to do |format|
+      format.html { send_file result['file'], filename: result['file_name'], type: 'application/json' }
+      format.json { render json: JSON.parse(File.read(result['file'])) }
+    end
+  end
 end

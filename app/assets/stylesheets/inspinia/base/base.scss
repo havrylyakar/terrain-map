@@ -646,12 +646,12 @@ table.table-mail tr td {
 .green-bg {
   /*background: #91cfa1;*/
   background: url(asset-path('background_3.png')) no-repeat;
-  background-color: #C4F6FF;
+  background-color: #d6e1e6;
   background-position: bottom;
 }
 
 .black-bg {
-  background-color: #2f3238;
+  background-color: #d6e1e6;
 }
 
 .white-bg {
@@ -681,10 +681,6 @@ table.table-mail tr td {
 .red-bg {
   background-color: $red;
   color: #ffffff;
-}
-
-.black-bg {
-  background-color: #262626;
 }
 
 .panel-primary {

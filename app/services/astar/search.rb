@@ -1,11 +1,12 @@
 module Astar
   class Search < BaseService
-    def initialize(area, start_indexes, destination_indexes)
+    def initialize(area, start_indexes, destination_indexes, options = {})
       @area = area
       @open_nodes   = []
       @closed_nodes = []
       @start_indexes = start_indexes
       @destination_indexes = destination_indexes
+      @options = options
     end
 
     def call
@@ -20,10 +21,17 @@ module Astar
 
     attr_reader :area
 
-    delegate :space_coordinates, to: :сoordinate_service
+    delegate :space_coordinates, to: :coordinate_service
 
-    def сoordinate_service
-      @coordinates_service ||= ::Astar::Coordinates.new(area)
+    def delete_dest_and_start!(result)
+      result.tap do |array|
+        array.shift
+        array.pop
+      end
+    end
+
+    def coordinate_service
+      @coordinate_service ||= @options.fetch(:coordinate_service, ::Astar::Coordinates).new(area)
     end
 
     def start_node
@@ -35,7 +43,7 @@ module Astar
     end
 
     def neighbor_nodes
-      @neighbor_nodes ||= NeighborNodes.new(area, dest_node)
+      @neighbor_nodes ||= NeighborNodes.new(area, dest_node, coordinates_service: coordinate_service)
     end
 
     def expand(current_node)
@@ -57,10 +65,11 @@ module Astar
       result = []
       current_node = @open_nodes[0]
       while(current_node != nil)
-        result << current_node.position
+        result << current_node
         current_node = current_node.came_from
       end
-      result
+
+      delete_dest_and_start! result
     end
 
     def change_open_list_nodes!(current_node)
@@ -80,7 +89,7 @@ module Astar
     end
 
     def node_eql?(node1, node2)
-      node1.position == node2.position
+      node1.i == node2.i && node1.j == node2.j
     end
   end
 end

@@ -6,8 +6,10 @@ var View3dEvents = {
 
     let intersect = View3dEvents.firstMeshIntersect();
     if (Map.pinMode && AdditionalElements.someActive()) {
-      if ( intersect != null )
+      if ( intersect != null ){
         View3dEvents._intersectPoint(AdditionalElements.someActive().element, intersect);
+        if(Map.layers.way) Map.layers.way.hide();
+      }
     }
   },
 
@@ -28,7 +30,10 @@ var View3dEvents = {
         if (!pin.active) {
           pin.onSelect()
         }
-        else pin.onLoose()
+        else {
+          pin.onLoose()
+          if (Map.layers.way) $('.markers-way-js').click();
+        }
       }
     }
   },
@@ -66,7 +71,6 @@ var View3dEvents = {
   _intersectPoint(element, intersect) {
     element.position.set( 0, 0, 0 );
     element.lookAt( intersect.face.normal );
-    console.log(intersect.face.normal);
     element.position.copy( intersect.point );
   },
 

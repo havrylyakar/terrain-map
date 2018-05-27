@@ -35,7 +35,7 @@
   font-weight: 800;
   font-size: 4em;
   line-height: 1.3;
-  color: white;
+  color: #50808E;
 }
 
 .button-circle {
@@ -47,12 +47,12 @@
   border-radius: 35px;
   border: 3px solid #fff;
   position: relative;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.38);
   z-index: 1;
 }
 
 .button-circle:hover, .button-circle:focus, .button-circle:focus:active {
-  background-color: rgb(115, 148, 179);
+  background-color: #106999;
   border-color: #fff;
   outline: none;
 }
@@ -83,16 +83,14 @@
 }
 
 .round-button-circle {
-  margin-bottom: 20px;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.round-button-circle {
   top: 0px;
   padding: 5px;
-  float: left;
-  width: 7%;
+  width: 70px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  position: absolute;
 }
 
 .world-panel {
@@ -107,9 +105,10 @@
 }
 
 .preview-area{
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
-  background-color: rgba(163, 190, 211, 0.28);
+  background-color: rgba(156, 182, 202, 0.77);
   display: none;
 }
+

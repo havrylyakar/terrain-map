@@ -1,17 +1,15 @@
-.round-button-circle {
-  top: 0px;
-  padding: 5px;
-  float: left;
-  width: 7%;
-}
+@import 'inspinia/switchery/switchery';
 
 .active-look {
-  color: red;
-  border: 1px solid red;
+  color: white;
+  border: 1px solid white;
   padding: 5px;
   margin-right: 20px;
   float: right;
-  width: 10%;
+  width: 15%;
+  background-color: rgba(0, 0, 0, 0.38);
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .world-panel {
@@ -27,4 +25,9 @@
   color: white;
   font-size: 20px;
   font-weight: lighter;
+  padding-left: 100px;
+}
+
+.wold-bottom {
+  margin-top: 50px;
 }

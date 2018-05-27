@@ -1,0 +1,18 @@
+.ibox.collapsed
+  .ibox-title
+    %h5= I18n.t('panels.advanced_options')
+    .ibox-tools
+      %a.collapse-link
+        %i.fa.fa-chevron-up
+  .ibox-content
+    = f.fields_for :mesh do |m|
+      .form-group
+        %label.col-sm-3.control-label= I18n.t('views.areas.mesh.x')
+        .col-sm-7
+          = m.text_field :x, class: 'form-control', value: ::Area::DEFAULT_MESH[:x]
+        %label.col-sm-3.control-label= I18n.t('views.areas.mesh.y')
+        .col-sm-7
+          = m.text_field :y, class: 'form-control', value: ::Area::DEFAULT_MESH[:y]
+        %label.col-sm-3.control-label= I18n.t('views.areas.mesh.z')
+        .col-sm-7
+          = m.text_field :z, class: 'form-control', value: ::Area::DEFAULT_MESH[:z]

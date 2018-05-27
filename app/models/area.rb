@@ -1,7 +1,8 @@
 class Area < ApplicationRecord
   DEFAULT_MESH = {
     x: 50,
-    y: 50
+    y: 50,
+    z: 50
   }
 
   CONTENT_TYPES = [

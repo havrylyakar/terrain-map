@@ -19,7 +19,7 @@
   max-height: 360px;
   width: 48%;
   height: auto;
-  background: #3085a3;
+  background: #50808E;
   text-align: center;
   cursor: pointer;
 }
@@ -143,6 +143,7 @@ figure.effect-hera p a i {
   opacity: 0;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
+  font-size: 30px;
 }
 
 figure.effect-hera p a:first-child i {

@@ -1,10 +1,10 @@
 class RoadGeometry {
-  constructor(positions) {
+  constructor(positions, color = 'yellow', yPlus = Pin.radius()) {
     this._geometry = new THREE.SphereBufferGeometry( Pin.radius() / 2, 9, 6 );
-    // this._geometry.rotateX( Math.PI / 2 );
     this._positions = positions;
     this._group = new THREE.Group();
-    this._material = new THREE.MeshBasicMaterial({color: 'yellow'});
+    this._material = new THREE.MeshBasicMaterial({color: color});
+    this.yPlus = yPlus;
   }
 
   performGroup() {
@@ -16,8 +16,11 @@ class RoadGeometry {
       let mesh = new THREE.Mesh(geometry, material);
 
       mesh.position.setX(point.x);
-      mesh.position.setY(point.z * Map.worlSettings.elevationCoeficient);
+      mesh.position.setY((point.z * Map.worlSettings.elevationCoeficient) + this.yPlus);
       mesh.position.setZ(point.y);
+
+      mesh.matrixAutoUpdate = false;
+      mesh.updateMatrix();
 
       group.add( mesh );
     });
@@ -39,4 +42,15 @@ class RoadGeometry {
     return this._material;
   }
 
+  get visible() {
+    return this.group.visible;
+  }
+
+  hide() {
+    this.group.visible = false
+  }
+
+  show() {
+    this.group.visible = true
+  }
 }
